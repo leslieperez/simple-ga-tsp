@@ -49,7 +49,7 @@ public class Runner {
         System.out.println ("**                                                         **");
         System.out.println ("**           TEMPLATE GENETIC ALGORITTHM FOR TSP           **");
         System.out.println ("**                                                         **");
-        System.out.println ("**         ICI 3144: Investigacion de Operaciones          **");
+        System.out.println ("**         ICI 4144: Investigacion de Operaciones          **");
         System.out.println ("**             Profesora: Leslie Perez Caceres             **");
         System.out.println ("**                                                         **");
         System.out.println ("**      Pontificia Universidad Catolica de Valparaiso      **");
