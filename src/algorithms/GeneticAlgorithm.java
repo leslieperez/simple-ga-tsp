@@ -136,7 +136,7 @@ public class GeneticAlgorithm {
 			/* Revisar si algun hijo sin mutacion es la mejor solucion hasta el momento */
 			if (offspring.getBestTour().getCost() < best_tour.getCost()) {
                 updated = 1;
-				best_tour.Copy(offsping.getBestTour());
+				best_tour.Copy(offspring.getBestTour());
 			} 
 			
 			/* Aplicar mutacion */
@@ -153,9 +153,9 @@ public class GeneticAlgorithm {
             
             if (updated == 1) {
              	/* Reportar el mejor hijo */
-		        System.out.print(", mejor hijo: " + best_tour.getCost(), " (actualizado)\n");   
+		        System.out.print(", mejor hijo: " + best_tour.getCost() + " (actualizado)\n");   
             } else {
-		        System.out.print(", mejor hijo: " + offspring.getBestTour().getCost(), "\n");   
+		        System.out.print(", mejor hijo: " + offspring.getBestTour().getCost() + "\n");   
             }
 			
 		    /* Seleccionar nueva poblacion */
