@@ -100,7 +100,7 @@ public class GeneticAlgorithm {
 		int iteration = 0;
 		int[] parents;
         int updated = 0;
-        int previous_fitness;
+        long previous_fitness;
 		
 		/* Inicializar poblacion */
 		System.out.println("Generando poblacion inicial ...");
