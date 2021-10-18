@@ -2,8 +2,8 @@
 
 # Escriba aqui los resultados de las ejecuciones de dos algoritmos
 # para ser comparados
-resultados1 <- c(11665,12086,11556,9684,11644,11507,11949,12253,12061,11576) #seleccion aleatoria
-resultados2 <- c(8377,7389,9316,7266,8259,7988,7381,8540,7911,8138) #seleccion elitista
+resultados1 <- c(11333,11600,12041,11117,11068,11815,11253,11732,11395,11744) #seleccion aleatoria
+resultados2 <- c(7484,8803,8340,8662,8701,7170,7218,8527,7325,8604) #seleccion elitista
 
 # Reemplaze aqui con el nombre del archivo a para crear el boxplot
 plotfile = "ejemplo-boxplot.png"
