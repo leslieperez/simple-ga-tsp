@@ -145,7 +145,7 @@ public class GeneticAlgorithm {
 			/* Revisar si algun hijo es la mejor solucion hasta el momento */
 			if (offspring.getBestTour().getCost() < best_tour.getCost()) {
                 updated = 1;
-				best_tour.Copy(offsping.getBestTour());
+				best_tour.Copy(offspring.getBestTour());
 			} 
             
             System.out.print("Generacion " + iteration );
