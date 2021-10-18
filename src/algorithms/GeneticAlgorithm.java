@@ -99,6 +99,8 @@ public class GeneticAlgorithm {
 		int evaluation = 0;
 		int iteration = 0;
 		int[] parents;
+        int updated = 0;
+        int previous_fitness;
 		
 		/* Inicializar poblacion */
 		System.out.println("Generando poblacion inicial ...");
@@ -122,28 +124,39 @@ public class GeneticAlgorithm {
         /* bucle principal del algoritmo */
         System.out.println("\nComenzando busqueda \n");
 		while (terminationCondition(evaluation, max_evaluations, iteration, max_iterations)) {
-
+            updated = 0;
+            previous_fitness =  best_tour.getCost();
+            
 			/* Aplicar cruzamiento para generar poblacion de hijos */
 			while (offspring.size() < offspring_size) {
 				parents = population.selectParents(pselection_type); 
 				offspring.add(population.crossover(parents, crossover_type, false));
 			}
+            
+			/* Revisar si algun hijo sin mutacion es la mejor solucion hasta el momento */
+			if (offspring.getBestTour().getCost() < best_tour.getCost()) {
+                updated = 1;
+				best_tour.Copy(offsping.getBestTour());
+			} 
 			
 			/* Aplicar mutacion */
 	        offspring.mutation(mutation_prob, mutation_type, false);
-			
-	        /* Reportar el mejor hijo */
-		    System.out.print("Generacion " + iteration );
-		    System.out.print(", mejor hijo: " + offspring.getBestTour().getCost());
-
+ 
 			/* Revisar si algun hijo es la mejor solucion hasta el momento */
 			if (offspring.getBestTour().getCost() < best_tour.getCost()) {
-				System.out.print(", mejor actual: " + best_tour.getCost() + 
-						 " -> "+ offspring.getBestTour().getCost()+ " (actualizado) \n");	
-				best_tour.Copy(population.getBestTour());
-			} else {
-				System.out.print(", mejor actual: " + best_tour.getCost() +"\n");
-			}
+                updated = 1;
+				best_tour.Copy(offsping.getBestTour());
+			} 
+            
+            System.out.print("Generacion " + iteration );
+            System.out.print(", mejor inicial: " + previous_fitness);
+            
+            if (updated == 1) {
+             	/* Reportar el mejor hijo */
+		        System.out.print(", mejor hijo: " + best_tour.getCost(), " (actualizado)\n");   
+            } else {
+		        System.out.print(", mejor hijo: " + offspring.getBestTour().getCost(), "\n");   
+            }
 			
 		    /* Seleccionar nueva poblacion */
 		    if (selection_strategy == SelectionStrategy.MULAMBDA) {
